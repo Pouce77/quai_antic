@@ -37,7 +37,11 @@
 						</ul>
 						<ul class="navbar-nav me-auto w-100 justify-content-end">
 							<li class="nav-item bg-dark rounded m-2 m-lg-0 p-1 nav-fill">
+							{% if app.user %}
+								<a class="nav-link" href="/logout">Se déconnecter</a>
+							{% else %}
 								<a class="nav-link" href="/login">Se connecter</a>
+							{% endif %}	
 							</li>
 						</ul>
 					</div>

@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un compte{% endblock %}
+
+{% block body %}
+	<div class="m-auto w-50 p-3 border border-primary rounded shadow">
+		{{ form_start(form, {'attr': {'class': 'container'}}) }}
+		{{form_row(form.username, {'attr': {'class': 'form-control'}})}}
+		{{form_row(form.email, {'attr': {'class': 'form-control'}})}}
+		{{form_label(form.password)}}
+		<div class="input-group mb-3">
+			{{form_widget(form.password, {'attr': {'class': 'form-control'}})}}
+			<span role="button" class="input-group-text" onclick="togglePassword()">
+				<i class="bi bi-eye" id="eye"></i>
+				<i class="bi bi-eye-slash d-none" id="eye-slash"></i>
+			</span>
+		</div>
+		{{form_errors(form.password)}}
+        {{form_label(form.confirm)}}
+		{{ form_widget(form.confirm, {'attr': {'class': 'form-control'}})}}
+        {{ form_rest(form) }}
+		<input class='btn btn-success mt-4' type="submit" value="Créer le compte"></input>
+	<div>
+		<a href="/login" class="btn btn-link px-0">Se connecter</a>
+	</div>
+</div>{% endblock %}

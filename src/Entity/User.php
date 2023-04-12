@@ -4,12 +4,15 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    private $passwordHasher;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -29,6 +32,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    private ?string $confirm = null;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+
+        $this->passwordHasher=$passwordHasher;
+    }
 
     public function getId(): ?int
     {
@@ -86,7 +97,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function setPassword(string $password): self
     {
-        $this->password = $password;
+        $this->password = $this->passwordHasher->hashPassword($this,$password);
 
         return $this;
     }
@@ -116,6 +127,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUsername($username)
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of confirm
+     */ 
+    public function getConfirm()
+    {
+        return $this->confirm;
+    }
+
+    /**
+     * Set the value of confirm
+     *
+     * @return  self
+     */ 
+    public function setConfirm($confirm)
+    {
+        $this->confirm = $confirm;
 
         return $this;
     }
