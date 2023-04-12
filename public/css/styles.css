@@ -1,3 +1,20 @@
 .logo{
   height:75px
 }
+.imageContainer{
+  position: relative;
+}
+.titrePhoto{
+  display:none;
+  position: absolute;
+  top:60%;
+  left:30%;
+  z-index:30;
+  color:white;
+}
+.imgplat{
+  opacity: 1;
+}
+.noHover{
+  pointer-events: none;
+}
