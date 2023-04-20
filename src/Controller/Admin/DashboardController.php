@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Horaire;
 use App\Entity\ImagePlats;
 use App\Controller\Admin\ImagePlatsCrudController;
+use App\Entity\Reservation;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -52,8 +53,10 @@ class DashboardController extends AbstractDashboardController
     {
     
         yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'app_home');
-        yield MenuItem::linkToCrud('Images des plats', 'fas fa-map-marker-alt', ImagePlats::class);
-        yield MenuItem::linkToCrud('Horaires', 'fas fa-comments', Horaire::class);
+        yield MenuItem::linkToCrud('Images des plats', 'fas fa-image', ImagePlats::class);
+        yield MenuItem::linkToCrud('Horaires', 'fas fa-clock', Horaire::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
+        yield MenuItem::linkToCrud('Reservation', 'fas fa-calendar-days', Reservation::class);
+
     }
 }

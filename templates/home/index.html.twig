@@ -9,13 +9,53 @@
       {% for image in images %}
 				<div class="col-5 col-lg-3 m-2">
 					<div class="imageContainer">
-						<img class="w-100 imgplat rounded" src={{ asset('/images/plats/') ~ image.url }} alt={{image.title}}>
-						<h3 class="titrePhoto fs-3 noHover btn btn-outline-primary">{{image.title}}</h3>
+						<img class="mw-100 imgplat rounded" src={{ asset('/images/plats/') ~ image.url }} alt={{image.title}}>
+						<span class="titrePhoto fs-6 noHover btn btn-outline-primary">{{image.title}}</span>
 						<span class="back"></span>
 					</div>
 				</div>
 			{% endfor %}
       </div>
-      <button type="button" class="btn btn-outline-primary m-5">Réserver</button>
+      <button type="button" class="btn btn-outline-primary m-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Réserver</button>
 	</div>
+	<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Réserver une table</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       
+				<form class="container" action="{{path('app_reservation')}}" method="get">
+					<label class="m-1" for="start"> Quel jour souhaitez-vous réserver ?</label>
+					<input class="form-control m-1" type="date" value="now" name="reservationDay" required>
+					<input class="btn btn-primary m-1" type="submit" value="valider">
+				</form>
+      </div>
+			
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block footer %}
+	<div class="container">
+					<div class="p-4 col-12 col-lg-4" style="color:black;">
+						<h3>Horaires d'ouverture :</h3>
+						{% for horaire in horaires %}
+						<div class="d-flex justify-content-between mt-2">
+							<div>{{horaire.day}}</div>
+							<div>
+								<div class="">{{horaire.morningStartAt|format_datetime('none', 'short', locale='fr')}} - {{horaire.morningEndAt|format_datetime('none', 'short', locale='fr')}}</div>
+								<div class="">{{horaire.afternoonStartAt|format_datetime('none', 'short', locale='fr')}} - {{horaire.afternoonEndAt|format_datetime('none', 'short', locale='fr')}}</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				
+				</div>
 {% endblock %}

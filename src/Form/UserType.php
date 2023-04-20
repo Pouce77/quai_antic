@@ -32,7 +32,7 @@ class UserType extends AbstractType{
       "label" => "Email",
       "required" => true,
       "constraints" => [
-          new NotBlank(["message" => "Le nom d'utilisateur ne doit pas être vide !"])
+          new NotBlank(["message" => "L'email ne doit pas être vide !"])
       ]
   ])
   ->add("password", PasswordType::class, [

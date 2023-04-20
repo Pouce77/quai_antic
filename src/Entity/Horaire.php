@@ -18,10 +18,17 @@ class Horaire
     private ?string $day = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $startAt = null;
+    private ?\DateTimeInterface $morningStartAt = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $endAt = null;
+    private ?\DateTimeInterface $morningEndAt = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $afternoonStartAt = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE)]
+    private ?\DateTimeInterface $afternoonEndAt = null;
+    
 
     public function getId(): ?int
     {
@@ -40,27 +47,123 @@ class Horaire
         return $this;
     }
 
-    public function getStartAt(): ?\DateTimeInterface
+    /**
+     * Get the value of morningStartAt
+     */ 
+    public function getMorningStartAt()
     {
-        return $this->startAt;
+        return $this->morningStartAt;
     }
 
-    public function setStartAt(\DateTimeInterface $startAt): self
+    /**
+     * Set the value of morningStartAt
+     *
+     * @return  self
+     */ 
+    public function setMorningStartAt($morningStartAt)
     {
-        $this->startAt = $startAt;
+        $this->morningStartAt = $morningStartAt;
 
         return $this;
     }
 
-    public function getEndAt(): ?\DateTimeInterface
+    /**
+     * Get the value of morningEndAt
+     */ 
+    public function getMorningEndAt()
     {
-        return $this->endAt;
+        return $this->morningEndAt;
     }
 
-    public function setEndAt(\DateTimeInterface $endAt): self
+    /**
+     * Set the value of morningEndAt
+     *
+     * @return  self
+     */ 
+    public function setMorningEndAt($morningEndAt)
     {
-        $this->endAt = $endAt;
+        $this->morningEndAt = $morningEndAt;
 
         return $this;
+    }
+
+    /**
+     * Get the value of afternoonStartAt
+     */ 
+    public function getAfternoonStartAt()
+    {
+        return $this->afternoonStartAt;
+    }
+
+    /**
+     * Set the value of afternoonStartAt
+     *
+     * @return  self
+     */ 
+    public function setAfternoonStartAt($afternoonStartAt)
+    {
+        $this->afternoonStartAt = $afternoonStartAt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of afternoonEndAt
+     */ 
+    public function getAfternoonEndAt()
+    {
+        return $this->afternoonEndAt;
+    }
+
+    /**
+     * Set the value of afternoonEndAt
+     *
+     * @return  self
+     */ 
+    public function setAfternoonEndAt($afternoonEndAt)
+    {
+        $this->afternoonEndAt = $afternoonEndAt;
+
+        return $this;
+    }
+
+    public function fractionnerMatin($Duration="60"){
+     
+        $ReturnArray = array ();
+        $start=$this->getMorningStartAt();
+        $end=$this->getMorningEndAt();
+    
+        $timestart=$start->getTimestamp();
+        $timeend=$end->getTimestamp();
+     
+        $AddMins  = $Duration * 15;
+     
+        while ($timestart <= $timeend)
+        {
+            $ReturnArray[] = date ("G:i", $timestart);
+            $timestart += $AddMins;
+        }
+        dump($ReturnArray);
+        return $ReturnArray;
+    }
+
+    public function fractionnerAprem($Duration="60"){
+     
+        $ReturnArray = array ();
+        $start=$this->getAfternoonStartAt();
+        $end=$this->getAfternoonEndAt();
+    
+        $timestart=$start->getTimestamp();
+        $timeend=$end->getTimestamp();
+     
+        $AddMins  = $Duration * 15;
+     
+        while ($timestart <= $timeend)
+        {
+            $ReturnArray[] = date ("G:i", $timestart);
+            $timestart += $AddMins;
+        }
+        dump($ReturnArray);
+        return $ReturnArray;
     }
 }
