@@ -20,7 +20,7 @@
 	<body>
         <header>
 		{% block header %}
-			<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-2">
 				<div class="container-fluid">
 					<a class="navbar-brand" href="/"><img class="logo" src={{asset('/images/logoquaiantic.png')}} alt="logo"></a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@
 					<div class="collapse navbar-collapse" id="navbarColor01">
 						<ul class="navbar-nav me-auto">
 							<li class="nav-item m-2 m-lg-0 p-1 nav-fill">
-								<a class="nav-link cartehover" href="#">Carte</a>
+								<a class="nav-link cartehover" href="/carte">Carte</a>
 							</li>
 							{% if app.request.attributes.get('_route') == "app_reservation" %}
 							{% else %}

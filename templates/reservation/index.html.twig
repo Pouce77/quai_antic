@@ -3,7 +3,12 @@
 {% block title %}Réserver une table{% endblock %}
 
 {% block body %}
-
+    <nav className='ariane' aria-label="breadcrumb">
+      <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Réservation</li>
+      </ol>
+    </nav>
     <div class="w-50 m-auto text-center pt-3 pb-3 border border-primary rounded">{{day|format_date('full', locale='fr')}}</div>
    
     {{ form_start(form, {'attr': {'class': 'container col-12 col-lg-4 mt-4'}}) }}
