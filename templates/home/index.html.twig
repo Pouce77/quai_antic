@@ -50,8 +50,16 @@
 						<div class="d-flex justify-content-between mt-2">
 							<div>{{horaire.day}}</div>
 							<div>
-								<div class="">{{horaire.morningStartAt|format_datetime('none', 'short', locale='fr')}} - {{horaire.morningEndAt|format_datetime('none', 'short', locale='fr')}}</div>
-								<div class="">{{horaire.afternoonStartAt|format_datetime('none', 'short', locale='fr')}} - {{horaire.afternoonEndAt|format_datetime('none', 'short', locale='fr')}}</div>
+								{% if  horaire.morningStartAt|format_datetime('none', 'short', locale='fr')  == "00:00" %}
+									<div>Fermé</div>
+								{% else %}
+									<div class="">{{horaire.morningStartAt|format_datetime('none', 'short', locale='fr')}} - {{horaire.morningEndAt|format_datetime('none', 'short', locale='fr')}}</div>
+								{% endif %}
+								{% if horaire.afternoonStartAt|format_datetime('none', 'short', locale='fr') =="00:00" %}
+									<div>Fermé</div>
+								{% else %}
+									<div class="">{{horaire.afternoonStartAt|format_datetime('none', 'short', locale='fr')}} - {{horaire.afternoonEndAt|format_datetime('none', 'short', locale='fr')}}</div>
+								{% endif %}
 							</div>
 						</div>
 						{% endfor %}

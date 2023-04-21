@@ -35,6 +35,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     private ?string $confirm = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $allergie = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $nbrCouvert = null;
+
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
 
@@ -147,6 +153,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setConfirm($confirm)
     {
         $this->confirm = $confirm;
+
+        return $this;
+    }
+
+    public function getAllergie(): ?string
+    {
+        return $this->allergie;
+    }
+
+    public function setAllergie(?string $allergie): self
+    {
+        $this->allergie = $allergie;
+
+        return $this;
+    }
+
+    public function getNbrCouvert(): ?int
+    {
+        return $this->nbrCouvert;
+    }
+
+    public function setNbrCouvert(?int $nbrCouvert): self
+    {
+        $this->nbrCouvert = $nbrCouvert;
 
         return $this;
     }

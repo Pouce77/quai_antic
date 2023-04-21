@@ -39,7 +39,7 @@
 							{% endif %}
 						</ul>
 						<ul class="navbar-nav me-auto w-100 justify-content-end">
-							<li class="nav-item bg-dark rounded m-2 m-lg-0 p-1 nav-fill">
+							<li class="nav-item bg-dark rounded m-2 m-lg-1 p-1 nav-fill">
 							{% if app.user %}
 								<a class="nav-link" href="/logout">Se déconnecter</a>
 							{% else %}
@@ -47,7 +47,7 @@
 							{% endif %}	
 							</li>
 							{% if app.user %}
-							<li>
+							<li class="nav-item bg-dark rounded m-2 m-lg-1  p-1 nav-fill">
 								<a class="nav-link" href="/admin">Administrer</a>
 							</li>
 							{% endif %}	

@@ -28,6 +28,9 @@ class Horaire
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
     private ?\DateTimeInterface $afternoonEndAt = null;
+
+    #[ORM\Column]
+    private ?int $capacite = null;
     
 
     public function getId(): ?int
@@ -143,7 +146,6 @@ class Horaire
             $ReturnArray[] = date ("G:i", $timestart);
             $timestart += $AddMins;
         }
-        dump($ReturnArray);
         return $ReturnArray;
     }
 
@@ -163,7 +165,19 @@ class Horaire
             $ReturnArray[] = date ("G:i", $timestart);
             $timestart += $AddMins;
         }
-        dump($ReturnArray);
+        
         return $ReturnArray;
+    }
+
+    public function getCapacite(): ?int
+    {
+        return $this->capacite;
+    }
+
+    public function setCapacite(int $capacite): self
+    {
+        $this->capacite = $capacite;
+
+        return $this;
     }
 }

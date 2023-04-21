@@ -26,33 +26,47 @@ class ReservationController extends AbstractController
 
         // on récupère le jour de la semaine
         $day=$request->query->get('reservationDay');
-        $dayDatetime=strtotime($day);
-        dump($dayDatetime);
         $dayReservation=new DateTime($day);
         $dayFormat=date("D", strtotime($day));
         $jour=getDay($dayFormat);
 
         //on boucle pour récupérer tous les horaires possible le jour choisi
         foreach($horaires as $hor){
-
             if($jour==$hor->getDay()){
                 $horaire=$hor;
             }
-
         }
 
         // Créneaux du matin et de l'aprés midi en fonction du jour de la semaine
         $creneauxMatin=$horaire->fractionnerMatin();
         $creneauxAprem=$horaire->fractionnerAprem();
 
-        //Tableau des créneaux indisponibles
+        //on verifie si le restaurant est ouvert
+        $ferme=false;
+        if($horaire->getCapacite()==0){
+            $ferme=true;
+        }
+
+        //On vérifie si le restaurant est complet 
         $reservations=$reservationRepository->findByDay($day);
+        $completM=false;
+        $capaciteMatin=getCapaciteMatin($reservations,$creneauxMatin);
+        if($horaire->getCapacite() <= $capaciteMatin){
+            $completM=true;
+        } 
+        $completA=false;
+        $capaciteAprem=getCapaciteAprem($reservations,$creneauxAprem);
+        if($horaire->getCapacite() <= $capaciteAprem){
+            $completA=true;
+        }
+
+        //Tableau des créneaux indisponibles
         $crenauxIndisponibles=array();
             foreach ($reservations as $reservation) {
                 $creneau=$reservation->getCreneaux();
                 array_push($crenauxIndisponibles,$creneau);
             }
-            
+
         $reservation=new Reservation();
         $form=$this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
@@ -62,7 +76,13 @@ class ReservationController extends AbstractController
             $entityManager=$doctrine->getManager();
             $entityManager->persist($reservation);
             $entityManager->flush();
-            return $this->redirectToRoute('app_home');
+
+            return $this->render('reservation/confirm.html.twig', [
+                'confirm' => true,
+                'day' => $reservation->getDay(),
+                'horaire' => $reservation->getCreneaux(),
+                'nbrPersonne' => $reservation->getNumberOfpeople()
+            ]);
         }
         return $this->render('reservation/index.html.twig', [
             'reservations' => $reservations,
@@ -70,7 +90,11 @@ class ReservationController extends AbstractController
             'day' => $day,
             'creneauxMatin' => $creneauxMatin,
             'creneauxAprem'=> $creneauxAprem,
-            'creneauxIndisponibles' => $crenauxIndisponibles
+            'creneauxIndisponibles' => $crenauxIndisponibles,
+            'completM' => $completM,
+            'completA' => $completA,
+            'ferme' => $ferme
+        
         ]);
     }
 
@@ -93,4 +117,29 @@ function getDay($day){
     };
 }
 
+//récupération de la capacité du restaurant en fonction du matin ou du soir
+function getCapaciteMatin($reservations, $creneauxMatin):int
+{
+    $capacite=0;
+    
+    foreach($reservations as $reservation){
+        if(in_array($reservation->getCreneaux(),$creneauxMatin)){
+        $capacite+=$reservation->getNumberOfpeople();
+        }
+    }
+
+    return $capacite;
+}
+function getCapaciteAprem($reservations, $creneauxAprem):int
+{
+    $capacite=0;
+    
+    foreach($reservations as $reservation){
+        if(in_array($reservation->getCreneaux(),$creneauxAprem)){
+        $capacite+=$reservation->getNumberOfpeople();
+        }
+    }
+
+    return $capacite;
+}
 

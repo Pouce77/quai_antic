@@ -36,7 +36,7 @@ class ReservationType extends AbstractType
                 new NotBlank(["message" => "L'email ne doit pas être vide !"])
             ]
             ])
-            ->add('allergie', TextareaType::class,[
+            ->add('allergie', TextType::class,[
                 "label" => "Renseigner vos allergies",
                "required" => false, 
             ])
