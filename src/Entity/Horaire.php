@@ -140,6 +140,9 @@ class Horaire
         $timeend=$end->getTimestamp();
      
         $AddMins  = $Duration * 15;
+
+        // On enlève la dernière heure
+        $timeend = $timeend-($AddMins*4);
      
         while ($timestart <= $timeend)
         {
@@ -159,7 +162,9 @@ class Horaire
         $timeend=$end->getTimestamp();
      
         $AddMins  = $Duration * 15;
-     
+        // On enlève la dernière heure
+        $timeend = $timeend-($AddMins*4);
+
         while ($timestart <= $timeend)
         {
             $ReturnArray[] = date ("G:i", $timestart);

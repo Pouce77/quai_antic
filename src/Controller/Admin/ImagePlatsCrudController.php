@@ -4,6 +4,9 @@ namespace App\Controller\Admin;
 
 use App\Entity\ImagePlats;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ImagePlatsCrudController extends AbstractCrudController
 {
@@ -12,14 +15,16 @@ class ImagePlatsCrudController extends AbstractCrudController
         return ImagePlats::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id')->hideOnForm(),
             TextField::new('title'),
-            TextEditorField::new('description'),
+            ImageField::new('url')
+                ->setBasePath('images/plats')
+                ->setUploadDir('public/images/plats')
         ];
     }
-    */
+    
 }

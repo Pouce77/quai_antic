@@ -30,7 +30,7 @@ class DashboardController extends AbstractDashboardController
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
         $url = $this->adminUrlGenerator
-         ->setController(ImagePlatsCrudController::class)
+         ->setController(ReservationCrudController::class)
          ->generateUrl();
          return $this->redirect($url);
         // Option 2. You can make your dashboard redirect to different pages depending on the user
@@ -55,11 +55,11 @@ class DashboardController extends AbstractDashboardController
     {
     
         yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'app_home');
+        yield MenuItem::linkToCrud('Reservation', 'fas fa-calendar-days', Reservation::class);
         yield MenuItem::linkToCrud('Images des plats', 'fas fa-image', ImagePlats::class);
         yield MenuItem::linkToCrud('Horaires', 'fas fa-clock', Horaire::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
-        yield MenuItem::linkToCrud('Reservation', 'fas fa-calendar-days', Reservation::class)
-        ;
+        
 
     }
 }

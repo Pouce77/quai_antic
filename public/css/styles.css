@@ -20,5 +20,7 @@
 }
 footer{
   background-color: #b58900;
-  
+}
+.cartehover:hover{
+  color: #073642;
 }

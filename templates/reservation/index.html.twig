@@ -4,9 +4,9 @@
 
 {% block body %}
 
-    <div class="w-50 m-auto text-center pt-2 pb-5">{{day|format_date('full', locale='fr')}}</div>
+    <div class="w-50 m-auto text-center pt-3 pb-3 border border-primary rounded">{{day|format_date('full', locale='fr')}}</div>
    
-    {{ form_start(form, {'attr': {'class': 'container col-12 col-lg-4'}}) }}
+    {{ form_start(form, {'attr': {'class': 'container col-12 col-lg-4 mt-4'}}) }}
         {% if app.user %}
             {{ form_row(form.email, {'attr': {'class':'form-control','value':app.user.email }}) }}
             {{ form_row(form.numberOfpeople, {'attr': {'class': 'form-control', 'value':app.user.nbrCouvert}})}}
@@ -21,7 +21,7 @@
         <h4>Le restaurant est fermé</h4> 
     {% else %}
     <span>Midi</span>
-    <div class="m-2">
+    <div class="m-2 p-2 border border-primary rounded">
     {% if completM %}     
             <h4>Le restaurant est complet</h4>
     {% else %}        
@@ -41,7 +41,7 @@
     </div>
 
     <span>Soir</span>
-    <div class="m-2">
+    <div class="m-2 p-2 border border-primary rounded">
     {% if completA %}
         <h4>Le restaurant est complet</h4> 
     {% else %}
@@ -62,6 +62,7 @@
     {{form_widget(form.creneaux,{'attr': {'hidden': true}})}}
     {{form_rest(form)}}
 
-    <input class='btn btn-primary mt-4 mb-4' type="submit" value="Réserver"></input>
+    <input class='btn btn-primary m4' type="submit" value="Réserver"></input>
+    <a class='btn btn-primary m-4' href="/">Annuler et revenir à l'accueil</a>
     
 {% endblock %}

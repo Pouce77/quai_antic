@@ -30,7 +30,7 @@
        
 				<form class="container" action="{{path('app_reservation')}}" method="get">
 					<label class="m-1" for="start"> Quel jour souhaitez-vous réserver ?</label>
-					<input class="form-control m-1" type="date" value="now" name="reservationDay" required>
+					<input class="form-control m-1" type="date" value={{ 'now' | format_date('full', locale='fr') }} name="reservationDay" required>
 					<input class="btn btn-primary m-1" type="submit" value="valider">
 				</form>
       </div>
