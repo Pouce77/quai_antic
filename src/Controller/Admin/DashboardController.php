@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Horaire;
 use App\Entity\ImagePlats;
 use App\Controller\Admin\ImagePlatsCrudController;
+use App\Entity\Plat;
 use App\Entity\Reservation;
 use App\Entity\User;
 use App\Repository\ReservationRepository;
@@ -57,6 +58,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'app_home');
         yield MenuItem::linkToCrud('Reservation', 'fas fa-calendar-days', Reservation::class);
         yield MenuItem::linkToCrud('Images des plats', 'fas fa-image', ImagePlats::class);
+        yield MenuItem::linkToCrud('Plats', 'fas fa-utensils', Plat::class);
         yield MenuItem::linkToCrud('Horaires', 'fas fa-clock', Horaire::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         

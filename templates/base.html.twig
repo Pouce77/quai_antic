@@ -61,6 +61,29 @@
     {% endblock %}
 		<footer>
 		{% block footer %}		
+		<div class="container mt-5">
+					<div class="p-4 col-12 col-lg-4" style="color:black;">
+						<h3>Horaires d'ouverture :</h3>
+						{% for horaire in horaires %}
+						<div class="d-flex justify-content-between mt-2">
+							<div>{{horaire.day}}</div>
+							<div>
+								{% if  horaire.morningStartAt|format_datetime('none', 'short', locale='fr')  == "00:00" %}
+									<div>Fermé</div>
+								{% else %}
+									<div class="">{{horaire.morningStartAt|format_datetime('none', 'short', locale='fr')}} - {{horaire.morningEndAt|format_datetime('none', 'short', locale='fr')}}</div>
+								{% endif %}
+								{% if horaire.afternoonStartAt|format_datetime('none', 'short', locale='fr') =="00:00" %}
+									<div>Fermé</div>
+								{% else %}
+									<div class="">{{horaire.afternoonStartAt|format_datetime('none', 'short', locale='fr')}} - {{horaire.afternoonEndAt|format_datetime('none', 'short', locale='fr')}}</div>
+								{% endif %}
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+				
+				</div>
 		{% endblock %}
 		</footer>
 	</body>

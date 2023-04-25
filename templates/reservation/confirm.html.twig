@@ -3,6 +3,12 @@
 {% block title %}Réservation confirmer{% endblock %}
 
 {% block body %}
+<nav className='ariane' aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Réservation</li>
+    </ol>
+</nav>
 
 <div class="h-100 w-50 m-auto ">
   <h5>Votre réservation du {{day|format_date('full', locale='fr')}} à {{horaire}} pour {{nbrPersonne}} personne(s) est confirmée</h5>

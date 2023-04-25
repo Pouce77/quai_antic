@@ -3,65 +3,38 @@
 {% block title %}Carte{% endblock %}
 
 {% block body %}
+<link rel="stylesheet" href={{ asset('css/stylesCarte.css') }}>
 <nav className='ariane' aria-label="breadcrumb">
       <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="/">Accueil</a></li>
       <li class="breadcrumb-item active" aria-current="page">Carte</li>
       </ol>
     </nav>
-    <h1 class="m-auto w-75 text-center p-4">Carte du restaurant</h1>
+    <h1 class="m-auto mb-2 w-75 text-center p-4">Carte du restaurant</h1>
     <div class="p-3 w-50 m-auto border border-primary rounded shadow bg-dark">
-        <h3>Catégory1</h3>
+    <h3>Entrées</h3>
+    {% for entree in entrees %}
         <ul>
             <li>
-                <span class="p-2">Titre du plat</span>
-                <span class="p-2">description du plat</span>
-                <span class="p-2">0.0 €</span>
-            </li>
-            <li>
-                <span class="p-2">Titre du plat</span>
-                <span class="p-2">description du plat</span>
-                <span class="p-2">0.0 €</span>
-            </li>
-            <li>
-                <span class="p-2">Titre du plat</span>
-                <span class="p-2">description du plat</span>
-                <span class="p-2">0.0 €</span>
-            </li>
-            <li>
-                <span class="p-2">Titre du plat</span>
-                <span class="p-2">description du plat</span>
-                <span class="p-2">0.0 €</span>
+                <span class="p-2 platTitle">{{entree.title}}</span>
+                <div class="p-2 platDescription">{{entree.description}}</div>
+                <span class="p-2 platprice">{{ entree.price }} €</span>
             </li>
         </ul>
-
-    </div> 
-    <div class="m-4"></div>       
+    {% endfor %}
+    </div>
+    <div class="m-2"></div>
     <div class="p-3 w-50 m-auto border border-primary rounded shadow bg-dark">
-        <h3>Catégory2</h3>
+    <h3>Plats</h3>
+    {% for plat in plats %}
         <ul>
             <li>
-                <span class="p-2">Titre du plat</span>
-                <span class="p-2">description du plat</span>
-                <span class="p-2">0.0 €</span>
-            </li>
-            <li>
-                <span class="p-2">Titre du plat</span>
-                <span class="p-2">description du plat</span>
-                <span class="p-2">0.0 €</span>
-            </li>
-            <li>
-                <span class="p-2">Titre du plat</span>
-                <span class="p-2">description du plat</span>
-                <span class="p-2">0.0 €</span>
-            </li>
-            <li>
-                <span class="p-2">Titre du plat</span>
-                <span class="p-2">description du plat</span>
-                <span class="p-2">0.0 €</span>
+                <span class="p-2 platTitle">{{plat.title}}</span>
+                <div class="p-2 platDescription">{{plat.description}}</div>
+                <span class="p-2 platprice">{{ plat.price }} €</span>
             </li>
         </ul>
-
+    {% endfor %}
     </div>
 
 {% endblock %}

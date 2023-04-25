@@ -81,7 +81,8 @@ class ReservationController extends AbstractController
                 'confirm' => true,
                 'day' => $reservation->getDay(),
                 'horaire' => $reservation->getCreneaux(),
-                'nbrPersonne' => $reservation->getNumberOfpeople()
+                'nbrPersonne' => $reservation->getNumberOfpeople(),
+                'horaires' => $horaires
             ]);
         }
         return $this->render('reservation/index.html.twig', [
@@ -93,8 +94,8 @@ class ReservationController extends AbstractController
             'creneauxIndisponibles' => $crenauxIndisponibles,
             'completM' => $completM,
             'completA' => $completA,
-            'ferme' => $ferme
-        
+            'ferme' => $ferme,
+            'horaires' => $horaires
         ]);
     }
     

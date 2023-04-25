@@ -9,6 +9,7 @@
       <li class="breadcrumb-item active" aria-current="page">Réservation</li>
       </ol>
     </nav>
+    <div class="container">
     <div class="w-50 m-auto text-center pt-3 pb-3 border border-primary rounded">{{day|format_date('full', locale='fr')}}</div>
    
     {{ form_start(form, {'attr': {'class': 'container col-12 col-lg-4 mt-4'}}) }}
@@ -69,5 +70,5 @@
 
     <input class='btn btn-primary m4' type="submit" value="Réserver"></input>
     <a class='btn btn-primary m-4' href="/">Annuler et revenir à l'accueil</a>
-    
+    </div>
 {% endblock %}
