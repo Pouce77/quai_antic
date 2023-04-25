@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\LoginType;
+use App\Repository\HoraireRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,10 +13,11 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     #[Route('/login', name: 'login')]
-    public function login(AuthenticationUtils $authenticationUtils, Request $request): Response
+    public function login(AuthenticationUtils $authenticationUtils, Request $request, HoraireRepository $horaireRepository): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
+        $horaires=$horaireRepository->findAll();
 
         $form = $this->createForm(LoginType::class);
         $form->handleRequest($request);
@@ -27,7 +29,8 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', [
             'error' => $error,
             'last_username' => $lastUsername,
-            "form" => $form->createView()
+            'form' => $form->createView(),
+            'horaires' => $horaires
         ]);
     }
 
