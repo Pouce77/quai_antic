@@ -102,7 +102,7 @@ class ReservationController extends AbstractController
 
 // récupération des jours en français
 function getDay($day){
-    
+
     $jourSemaine=["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
     $dayofWeek=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 

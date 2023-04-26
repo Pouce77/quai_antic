@@ -16,10 +16,9 @@ class LoginType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('username',TextType::class,[
-            "label" => "Nom d'utilisateur",
+        ->add('email',TextType::class,[
+            "label" => "Email",
             "required" => true,
-            //'row_attr' => ['class' => 'nom', 'id' => 'name'],
             "constraints" => [
               new Length(["min" => 2, "max" => 180, "minMessage" => "Le nom d'utilisateur ne doit pas faire moins de 2 caractères", "maxMessage" => "Le nom d'utilisateur ne doit pas faire plus de 180 caractères"]),
               new NotBlank(["message" => "Le nom d'utilisateur ne doit pas être vide !"])
