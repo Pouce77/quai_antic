@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Horaire;
 use App\Entity\ImagePlats;
 use App\Controller\Admin\ImagePlatsCrudController;
+use App\Entity\Menu;
 use App\Entity\Plat;
 use App\Entity\Reservation;
 use App\Entity\User;
@@ -27,7 +28,7 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-
+        
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
         $url = $this->adminUrlGenerator
@@ -59,6 +60,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Reservation', 'fas fa-calendar-days', Reservation::class);
         yield MenuItem::linkToCrud('Images des plats', 'fas fa-image', ImagePlats::class);
         yield MenuItem::linkToCrud('Plats', 'fas fa-utensils', Plat::class);
+        yield MenuItem::linkToCrud('Menus', 'fas fa-bars', Menu::class);
         yield MenuItem::linkToCrud('Horaires', 'fas fa-clock', Horaire::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         

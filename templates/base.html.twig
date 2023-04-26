@@ -31,6 +31,9 @@
 							<li class="nav-item m-2 m-lg-0 p-1 nav-fill">
 								<a class="nav-link cartehover" href="/carte">Carte</a>
 							</li>
+							<li class="nav-item m-2 m-lg-0 p-1 nav-fill">
+								<a class="nav-link cartehover" href="/menu">Menus</a>
+							</li>
 							{% if app.request.attributes.get('_route') == "app_reservation" %}
 							{% else %}
 							<li class="nav-item bg-dark rounded m-2 m-lg-0 p-1 nav-fill">
@@ -39,6 +42,11 @@
 							{% endif %}
 						</ul>
 						<ul class="navbar-nav me-auto w-100 justify-content-end">
+							{% if app.user and is_granted('ROLE_ADMIN') %}
+							<li class="nav-item bg-dark rounded m-2 m-lg-1  p-1 nav-fill">
+								<a class="nav-link" href="/admin">Espace Administrateur</a>
+							</li>
+							{% endif %}	
 							<li class="nav-item bg-dark rounded m-2 m-lg-1 p-1 nav-fill">
 							{% if app.user %}
 								<a class="nav-link" href="/logout">Se déconnecter</a>
@@ -46,11 +54,6 @@
 								<a class="nav-link" href="/login">Se connecter</a>
 							{% endif %}	
 							</li>
-							{% if app.user and is_granted('ROLE_ADMIN') %}
-							<li class="nav-item bg-dark rounded m-2 m-lg-1  p-1 nav-fill">
-								<a class="nav-link" href="/admin">Espace Administrateur</a>
-							</li>
-							{% endif %}	
 						</ul>
 					</div>
 				</div>
@@ -83,6 +86,8 @@
 						{% endfor %}
 					</div>
 					<div class="p-4 col-12 col-lg-4" style="color:black;">
+						<img class='logo' src={{asset('/images/logoquaiantic.png')}} alt="logo">
+						<div>Chef Arnaud Michant</div>
 						<div>
 							<span class="fs-3">Adresse :</span>
 							<div>15, rue de la mairie 73000 Chambéry</div>

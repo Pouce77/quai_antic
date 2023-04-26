@@ -4,3 +4,7 @@
 .platDescription{
   font-style: italic;
 }
+.platPrice{
+  font-weight: bold;
+  font-style: italic;
+}

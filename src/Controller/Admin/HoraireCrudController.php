@@ -23,6 +23,7 @@ class HoraireCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
+            // On configure les choix possibles pour les jours de la semaine
             ChoiceField::new('Day')->setChoices([
                 'Lundi' => 'Lundi',
                 'Mardi' => 'Mardi',

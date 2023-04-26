@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menus{% endblock %}
+
+{% block body %}
+  <link rel="stylesheet" href={{ asset('css/stylesCarte.css') }}>
+  <nav className='ariane' aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Menus</li>
+    </ol>
+  </nav>
+    
+  <h1 class="m-auto mb-2 w-75 text-center p-4 colorTitle">Les menus</h1>
+  {% for title in menuTitle %} 
+  <div class="p-3 w-50 m-auto border border-primary rounded shadow bg-dark">
+    <h1 class="colorTitle">{{ title }}</h1>
+    {% for formule in menus %}
+      {% if formule.title == title %}
+   
+        <div class="colorTitle">
+         {{ formule.formule}}
+        </div>
+        <div>
+          <i>{{formule.description}}</i>
+        </div>
+        <div>
+          <b><i>{{formule.price}} €</i></b>
+        </div>
+      {% endif %}
+     {% endfor %}
+  </div>
+  <div class="m-2"></div>
+  {% endfor %}
+{% endblock %}

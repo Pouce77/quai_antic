@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-
 class ReservationController extends AbstractController
 {
 
@@ -23,7 +22,6 @@ class ReservationController extends AbstractController
     {
         $horaire=new Horaire();
         $horaires=$horaireRepository->findAll();
-
         // on récupère le jour de la semaine
         $day=$request->query->get('reservationDay');
         $dayReservation=new DateTime($day);
@@ -73,6 +71,7 @@ class ReservationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
         {    
             $reservation->setDay($dayReservation);
+            
             $entityManager=$doctrine->getManager();
             $entityManager->persist($reservation);
             $entityManager->flush();
@@ -98,11 +97,12 @@ class ReservationController extends AbstractController
             'horaires' => $horaires
         ]);
     }
-    
+
 }
 
 // récupération des jours en français
 function getDay($day){
+    
     $jourSemaine=["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"];
     $dayofWeek=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 

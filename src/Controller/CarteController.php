@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\HoraireRepository;
+use App\Repository\MenuRepository;
 use App\Repository\PlatRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +25,29 @@ class CarteController extends AbstractController
             'plats' => $plats,
             'desserts' => $desserts,
             'horaires' => $horaire
+        ]);
+    }
+
+    #[Route('/menu', name: 'app_menu')]
+    public function menu(HoraireRepository $horaireRepository, MenuRepository $menuRepository): Response
+    {
+        
+        $horaire=$horaireRepository->findAll();
+        $menus=$menuRepository->findAll();
+        
+        // on crée un tableau des titres de menus pour envoyer au template 
+        $menuTitle=[];
+        foreach ($menus as $value) {
+            if(!in_array($value->getTitle(),$menuTitle)){
+           array_push($menuTitle,$value->getTitle());
+            }
+        }
+
+        return $this->render('carte/menus.html.twig', [
+            
+            'horaires' => $horaire,
+            'menus' => $menus,
+            'menuTitle'=>$menuTitle
         ]);
     }
 }

@@ -1,5 +1,5 @@
 $(function() { 
-    $('img').hover(
+    $('.imgplat').hover(
     function () {
       $(this).next().css('display', 'inline-block');
       $(this).css('opacity','0.5');
