@@ -16,19 +16,25 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Positive;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class ReservationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('day', DateType::class, [
+                "label" => "Quel jour souhaitez-vous réserver ?",
+                "required" => true,
+                'widget' => 'single_text'
+            ])
             ->add('numberOfpeople', IntegerType::class,[
             "label" => "Nombre de couverts",
             "required" => true,
             "constraints" => [
                 new NotBlank(["message" => "Le nombre de couvert ne peut être nul !"])
-                
-                ]
+            ]
             ])
             ->add('email', EmailType::class,[
             "required" => true,

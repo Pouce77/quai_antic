@@ -10,74 +10,37 @@
     </ol>
 </nav>
 <div class="container">
-    <div class="w-50 m-auto text-center pt-3 pb-3 border border-primary rounded">
-            {{day|format_date('full', locale='fr')}}
-             <input type="date" id="choicedate">
-    </div>
+    
         
     {{ form_start(form, {'attr': {'class': 'container col-12 col-lg-4 mt-4'}}) }}
    
         {% if app.user %}
+            {{ form_row(form.day, {'attr': {'class': 'form-control'}})}}
             {{ form_row(form.email, {'attr': {'class':'form-control','value':app.user.email }}) }}
             {{ form_row(form.numberOfpeople, {'attr': {'class': 'form-control', 'value':app.user.nbrCouvert}})}}
             {{ form_row(form.allergie, { 'attr': {'class': 'form-control mb-3', 'value':app.user.allergie}})}}
         {% else %}
+            {{ form_row(form.day, {'attr': {'class': 'form-control','id':'choicedate'}})}}
             {{ form_row(form.email, {'attr': {'class':'form-control'}}) }}
             {{ form_row(form.numberOfpeople, {'attr': {'class': 'form-control'}})}}
             {{ form_row(form.allergie, { 'attr': {'class': 'form-control mb-3'}})}}
         {% endif %}
+        <div id="creneauxDispo">
+            <span>Midi</span>
+            <div id="creneauxMatin" class="m-2 p-2 border border-primary rounded">                   
+            </div>
 
-    {% if ferme %}
-        <h4>Le restaurant est fermé</h4> 
-    {% else %}
-        <span>Midi</span>
-        <div id="creneaux" class="m-2 p-2 border border-primary rounded">
-        {% if completM %}     
-            <h4>Le restaurant est complet</h4>
-        {% else %}
-            {% if creneauxAprem is empty %}
-                <span>Fermé ce jour</span>  
-            {% else %}        
-                {% for creneauMatin in creneauxMatin %}
-                    {% if creneauMatin == "0:00" %}
-                        <span>Fermé ce jour</span>
-                    {% else %}      
-                        {% if creneauMatin in creneauxIndisponibles %}
-                            <input class="btn btn-secondary m-1 opacity-25 noHover" type="button" value="{{creneauMatin}}">
-                        {% else %}
-                            <input id="{{creneauMatin}}" class="btn btn-secondary m-1" type="button" value="{{creneauMatin}}" onclick="creneauxChoice(this.id)">
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-        {% endif %}    
+            <span>Soir</span>
+            <div id="creneauxSoir" class="m-2 p-2 border border-primary rounded">            
+            </div>
         </div>
-
-        <span>Soir</span>
-        <div class="m-2 p-2 border border-primary rounded">
-            {% if completA %}
-                <h4>Le restaurant est complet</h4> 
-            {% else %}
-                {% if creneauxAprem is empty %}
-                    <span>Fermé ce jour</span>  
-                {% else %}
-                    {% for creneauAprem in creneauxAprem %}
-                        {% if creneauAprem in creneauxIndisponibles %}
-                            <input class="btn btn-secondary m-1 opacity-25 noHover" type="button" value="{{creneauAprem}}">
-                        {% else %}
-                            <input id="{{creneauAprem}}" class="btn btn-secondary m-1" type="button" value="{{creneauAprem}}" onclick="creneauxChoice(this.id)">
-                        {% endif %}
-                    {% endfor %}
-                {% endif %} 
-            {% endif %}
-        </div>
-    {% endif %} 
-
     {{form_widget(form.creneaux,{'attr': {'hidden': true}})}}
     {{form_rest(form)}}
 
-    <input class='btn btn-primary m4' type="submit" value="Réserver"></input>
-    <a class='btn btn-primary m-4' href="/">Annuler et revenir à l'accueil</a>
+    
+        <input id="buttonReserver" class='btn btn-primary m-4' type="submit" value="Réserver"></input>
+        <a class='btn btn-primary m-4' href="/">Annuler et revenir à l'accueil</a>
+    
 </div>
 <script src="scripts/reservation.js"></script>
 {% endblock %}

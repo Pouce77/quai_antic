@@ -130,7 +130,8 @@ class Horaire
         return $this;
     }
 
-    public function fractionnerMatin($Duration="60"){
+    public function fractionnerMatin($Duration="60"):array
+    {
      
         $ReturnArray = array ();
         $start=$this->getMorningStartAt();
@@ -152,7 +153,8 @@ class Horaire
         return $ReturnArray;
     }
 
-    public function fractionnerAprem($Duration="60"){
+    public function fractionnerAprem($Duration="60"):array
+    {
      
         $ReturnArray = array ();
         $start=$this->getAfternoonStartAt();
