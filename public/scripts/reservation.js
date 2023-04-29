@@ -23,15 +23,16 @@ inputDate.addEventListener('change',()=>{
 
   const date=new Date(inputDate.value)
   jour=formatDate(date)
-
+  
   while (creneauxMatin.firstChild) {
     creneauxMatin.removeChild(creneauxMatin.lastChild);
   }
   while(creneauxAprem.firstChild){
     creneauxAprem.removeChild(creneauxAprem.lastChild);
   }
-
-  creneauxDispo.setAttribute('class','');
+  while(creneauxDispo.firstChild){
+    creneauxDispo.removeChild(creneauxDispo.lastChild);
+  }
   
   fetch("https://127.0.0.1:8000/reservation/".concat(jour))
   .then((res) => {
@@ -39,17 +40,16 @@ inputDate.addEventListener('change',()=>{
   }) 
   .then(function(data) {
     
-    if(data["ferme"]){
-      
-      creneauxDispo.setAttribute("class", "d-none")
+    if(data["ferme"])
+    {
       let ferme=document.createElement("h3")
       ferme.textContent="Le restaurant est fermé ce jour."
-      creneauxDispo.after(ferme)
+      creneauxDispo.appendChild(ferme)
       buttonReserver.setAttribute("class","btn btn-primary m4 noHover")
-
     }else{
-    
-      if(data["completM"]){
+      buttonReserver.setAttribute("class","btn btn-primary m4")
+      if(data["completM"])
+      {
         let completM=document.createElement("h3")
         completM.textContent="Le restaurant est complet."
         creneauxMatin.appendChild(completM)

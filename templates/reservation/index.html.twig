@@ -12,7 +12,7 @@
 <div class="container">
     
         
-    {{ form_start(form, {'attr': {'class': 'container col-12 col-lg-4 mt-4'}}) }}
+    {{ form_start(form, {'attr': {'class': 'container col-12 col-lg-5 mt-4'}}) }}
    
         {% if app.user %}
             {{ form_row(form.day, {'attr': {'class': 'form-control'}})}}
@@ -25,15 +25,17 @@
             {{ form_row(form.numberOfpeople, {'attr': {'class': 'form-control'}})}}
             {{ form_row(form.allergie, { 'attr': {'class': 'form-control mb-3'}})}}
         {% endif %}
-        <div id="creneauxDispo">
+        
             <span>Midi</span>
             <div id="creneauxMatin" class="m-2 p-2 border border-primary rounded">                   
             </div>
 
             <span>Soir</span>
-            <div id="creneauxSoir" class="m-2 p-2 border border-primary rounded">            
+            <div id="creneauxSoir" class="m-2 p-2 border border-primary rounded">    
             </div>
-        </div>
+            <div id="creneauxDispo">        
+            </div>
+        
     {{form_widget(form.creneaux,{'attr': {'hidden': true}})}}
     {{form_rest(form)}}
 
