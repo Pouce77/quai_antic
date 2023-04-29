@@ -15,7 +15,7 @@
     {{ form_start(form, {'attr': {'class': 'container col-12 col-lg-5 mt-4'}}) }}
    
         {% if app.user %}
-            {{ form_row(form.day, {'attr': {'class': 'form-control'}})}}
+            {{ form_row(form.day, {'attr': {'class': 'form-control','id':'choicedate'}})}}
             {{ form_row(form.email, {'attr': {'class':'form-control','value':app.user.email }}) }}
             {{ form_row(form.numberOfpeople, {'attr': {'class': 'form-control', 'value':app.user.nbrCouvert}})}}
             {{ form_row(form.allergie, { 'attr': {'class': 'form-control mb-3', 'value':app.user.allergie}})}}
@@ -44,5 +44,5 @@
         <a class='btn btn-primary m-4' href="/">Annuler et revenir à l'accueil</a>
     
 </div>
-<script src="scripts/reservation.js"></script>
+
 {% endblock %}

@@ -19,7 +19,7 @@ class ReservationController extends AbstractController
     #[Route('/reservation', name: 'app_reservation')]
     public function index(Request $request, HoraireRepository $horaireRepository, ManagerRegistry $doctrine): Response
     {
-        $horaire=new Horaire();
+
         $horaires=$horaireRepository->findAll();
 
         $reservation=new Reservation();
@@ -106,7 +106,9 @@ class ReservationController extends AbstractController
             'ferme' => $ferme
         ];    
         
-        return $this->json($donnees);
+        $response=$this->json($donnees);
+        $response->headers->set('Access-Control-Allow-Origin' , '*');
+        return $response;
     }
 
 }

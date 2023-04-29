@@ -17,6 +17,8 @@
 		{{form_errors(form.password)}}
         {{form_label(form.confirm)}}
 		{{ form_widget(form.confirm, {'attr': {'class': 'form-control'}})}}
+		{{ form_row(form.allergie,{'attr': {'class': 'form-control'}})}}
+		{{ form_row(form.nbrCouvert,{'attr': {'class': 'form-control w-50'}})}}
         {{ form_rest(form) }}
 		<input class='btn btn-success mt-4' type="submit" value="Créer le compte"></input>
 	<div>
