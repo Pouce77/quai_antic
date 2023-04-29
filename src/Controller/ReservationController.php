@@ -10,9 +10,11 @@ use App\Repository\ReservationRepository;
 use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Date;
 
 class ReservationController extends AbstractController
 {
@@ -34,10 +36,11 @@ class ReservationController extends AbstractController
                 $horaire=$hor;
             }
         }
-
+        
         // Créneaux du matin et de l'aprés midi en fonction du jour de la semaine
         $creneauxMatin=$horaire->fractionnerMatin();
         $creneauxAprem=$horaire->fractionnerAprem();
+
 
         //on verifie si le restaurant est ouvert
         $ferme=false;
@@ -88,14 +91,79 @@ class ReservationController extends AbstractController
             'reservations' => $reservations,
             'form' => $form->createView(),
             'day' => $day,
-            'creneauxMatin' => $creneauxMatin,
+            /*'creneauxMatin' => $creneauxMatin,
             'creneauxAprem'=> $creneauxAprem,
             'creneauxIndisponibles' => $crenauxIndisponibles,
             'completM' => $completM,
             'completA' => $completA,
-            'ferme' => $ferme,
+            'ferme' => $ferme,*/
             'horaires' => $horaires
-        ]);
+         ]);
+    }
+
+    #[Route('/reservation/{day}', name: 'app_reservation_day')]
+    public function reservation(String $day, HoraireRepository $horaireRepository, ReservationRepository $reservationRepository,Request $request): Response
+    {
+        $horaires=$horaireRepository->findAll();
+        $horaire=new Horaire();
+
+        $dayFormat=date("D", strtotime($day));
+        $jour=getDay($dayFormat);
+
+        foreach($horaires as $hor){
+            if($jour==$hor->getDay()){
+               $horaire=$hor;
+            }
+        };
+
+        $creneauMatin=$horaire->fractionnerMatin();
+        $creneauSoir=$horaire->fractionnerAprem();
+
+        $ferme=false;
+        if($horaire->getCapacite()==0){
+            $ferme=true;
+        }
+
+        //On vérifie si le restaurant est complet 
+        
+        $reservations=$reservationRepository->findByDay($day);
+        $completM=false;
+        $capaciteMatin=getCapaciteMatin($reservations,$creneauMatin);
+        if($horaire->getCapacite() <= $capaciteMatin){
+            $completM=true;
+        } 
+        $completA=false;
+        $capaciteAprem=getCapaciteAprem($reservations,$creneauSoir);
+        if($horaire->getCapacite() <= $capaciteAprem){
+            $completA=true;
+        }
+
+        //Tableau des créneaux indisponibles
+        $crenauxIndisponibles=array();
+            foreach ($reservations as $reservation) {
+                $creneau=$reservation->getCreneaux();
+                array_push($crenauxIndisponibles,$creneau);
+            }
+        foreach ($crenauxIndisponibles as $creneau){
+            if(in_array($creneau,$creneauMatin)){
+                unset($creneauMatin[array_search($creneau, $creneauMatin)]);
+            }
+            if(in_array($creneau,$creneauSoir)){
+                unset($creneauMatin[array_search($creneau, $creneauSoir)]);
+            }
+
+        }
+
+        $donnees=[
+            'creneauxMatin' => $creneauMatin,
+            'creneauxAprem'=> $creneauSoir,
+            'creneauxIndisponibles' => $crenauxIndisponibles,
+            'completM' => $completM,
+            'completA' => $completA,
+            'ferme' => $ferme
+        ];    
+        
+        return $this->json($donnees);
     }
 
 }
@@ -142,4 +210,5 @@ function getCapaciteAprem($reservations, $creneauxAprem):int
 
     return $capacite;
 }
+
 
