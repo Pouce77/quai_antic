@@ -1,3 +1,8 @@
+
+html,body {
+  height: 100%;
+}
+
 .logo{
   height:75px
 }
@@ -20,6 +25,8 @@
 }
 footer{
   background-color: #b58900;
+  position: rabsolute;
+  width: 100%;
 }
 .cartehover:hover{
   color: #073642;

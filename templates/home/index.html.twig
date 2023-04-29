@@ -18,28 +18,5 @@
       </div>
       <button type="button" class="btn btn-outline-primary mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal">Réserver</button>
 	</div>
-	<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Réserver une table</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-       
-				<form class="container" action="{{path('app_reservation')}}" method="get">
-					<label class="m-1" for="start"> Quel jour souhaitez-vous réserver ?</label>
-					<input class="form-control m-1" type="date" value={{ 'now' | format_date('full', locale='fr') }} name="reservationDay" required>
-					<input class="btn btn-primary m-1" type="submit" value="valider">
-				</form>
-      </div>
-			
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-      </div>
-    </div>
-  </div>
-</div>
 {% endblock %}
 

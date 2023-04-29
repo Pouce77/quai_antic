@@ -14,17 +14,17 @@
   <h1 class="m-auto mb-2 w-75 text-center p-4 colorTitle">Les menus</h1>
   {% for title in menuTitle %} 
   <div class="p-3 w-50 m-auto border border-primary rounded shadow bg-dark">
-    <h1 class="colorTitle">{{ title }}</h1>
+    <h1 class="colorTitle text-center">{{ title }}</h1>
     {% for formule in menus %}
       {% if formule.title == title %}
    
-        <div class="colorTitle">
+        <div class="colorTitle text-center">
          {{ formule.formule}}
         </div>
-        <div>
+        <div class="text-center">
           <i>{{formule.description}}</i>
         </div>
-        <div>
+        <div class="text-center">
           <b><i>{{formule.price}} €</i></b>
         </div>
       {% endif %}

@@ -23,7 +23,7 @@ class ImagePlatsCrudController extends AbstractCrudController
             TextField::new('title'),
             ImageField::new('url')
                 ->setBasePath('images/plats')
-                ->setUploadDir('public/images/plats')
+                ->setUploadDir('images/plats')
         ];
     }
     
