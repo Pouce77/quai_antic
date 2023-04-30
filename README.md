@@ -51,6 +51,6 @@ Pour la font : les icones bootstrap via le CDN
 Livrables :
 La charte graphique et le maquettage : 
 
-le guide d'utilisation : https://drive.google.com/drive/u/2/folders/17jbWO8nA8lprXx3d4e40tGj-pq_4coWO
+le guide d'utilisation : 
 
-Les diagrammes UML (diagramme de cas d'utilisation, de séquences et de classe) : https://drive.google.com/drive/u/2/folders/1TmbDqgiK5pglAqqpnnLJ8-UhBnQs7zuU
+Les diagrammes UML (diagramme de cas d'utilisation, de séquences et de classe) :
