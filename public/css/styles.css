@@ -1,11 +1,5 @@
-@font-face {
-	font-family:'Montserrat', sans-serif;
-	src: url('fonts/Montserrat-Regular.ttf');
-}
-@font-face {
-	font-family:'Lora', sans-serif;
-	src: url('fonts/Lora-Regular.ttf');
-}
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Montserrat&display=swap');
+
 .montserrat{
   font-family: 'Montserrat', sans-serif;
 }
