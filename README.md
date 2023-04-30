@@ -53,7 +53,7 @@ Pour les icones : icons Bootstrap
 
 le guide d'utilisation : 
 
-(Lien vers le PDF)
+Lien vers le PDF : https://drive.google.com/file/d/1juWHtquVr8P3A0sa7z4neP8sY5CFTxNd/view?usp=sharing
 
 Accés à l'espace administrateur : Identifiant et mot de passe dans la copie de l'ECF
 
