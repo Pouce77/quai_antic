@@ -1,4 +1,17 @@
-
+@font-face {
+	font-family:'Montserrat', sans-serif;
+	src: url('fonts/Montserrat-Regular.ttf');
+}
+@font-face {
+	font-family:'Lora', sans-serif;
+	src: url('fonts/Lora-Regular.ttf');
+}
+.montserrat{
+  font-family: 'Montserrat', sans-serif;
+}
+.lora{
+  font-family: 'Lora', sans-serif;
+}
 html,body {
   height: 100%;
 }

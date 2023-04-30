@@ -13,39 +13,39 @@
 
     <h1 class="m-auto mb-2 w-75 text-center p-4 colorTitle">Carte du restaurant</h1>
     <div class="p-3 col-11 col-lg-5 m-auto border border-primary rounded shadow bg-dark">
-    <h3 class="colorTitle">Entrées</h3>
+    <h3 class="colorTitle montserrat">Entrées</h3>
     {% for entree in entrees %}
         <ul>
             <li>
-                <span class="p-2 platTitle">{{entree.title}}</span>
-                <div class="p-2 platDescription">{{entree.description}}</div>
-                <span class="p-2 platPrice">{{ entree.price }} €</span>
+                <span class="p-2 platTitle lora">{{entree.title}}</span>
+                <div class="p-2 platDescription lora">{{entree.description}}</div>
+                <span class="p-2 platPrice lora">{{ entree.price }} €</span>
             </li>
         </ul>
     {% endfor %}
     </div>
     <div class="m-2"></div>
     <div class="p-3 col-11 col-lg-5 m-auto border border-primary rounded shadow bg-dark">
-    <h3 class="colorTitle">Plats</h3>
+    <h3 class="colorTitle montserrat">Plats</h3>
     {% for plat in plats %}
         <ul>
             <li>
-                <span class="p-2 platTitle">{{plat.title}}</span>
-                <div class="p-2 platDescription">{{plat.description}}</div>
-                <span class="p-2 platPrice">{{ plat.price }} €</span>
+                <span class="p-2 platTitle lora">{{plat.title}}</span>
+                <div class="p-2 platDescription lora">{{plat.description}}</div>
+                <span class="p-2 platPrice lora">{{ plat.price }} €</span>
             </li>
         </ul>
     {% endfor %}
     </div>
     <div class="m-2"></div>
     <div class="p-3 col-11 col-lg-5 m-auto border border-primary rounded shadow bg-dark">
-    <h3 class="colorTitle">Desserts</h3>
+    <h3 class="colorTitle montserrat">Desserts</h3>
     {% for dessert in desserts %}
         <ul>
             <li>
-                <span class="p-2 platTitle">{{dessert.title}}</span>
-                <div class="p-2 platDescription">{{dessert.description}}</div>
-                <span class="p-2 platPrice">{{ dessert.price }} €</span>
+                <span class="p-2 platTitle lora">{{dessert.title}}</span>
+                <div class="p-2 platDescription lora">{{dessert.description}}</div>
+                <span class="p-2 platPrice lora">{{ dessert.price }} €</span>
             </li>
         </ul>
     {% endfor %}
