@@ -51,9 +51,9 @@ Le thême Solar sur bootswatch.com
 Pour la police : Google Fonts
 Pour les icones : icons Bootstrap
 
-Livrables :
-La charte graphique et le maquettage : 
-
 le guide d'utilisation : 
 
-Les diagrammes UML (diagramme de cas d'utilisation, de séquences et de classe) :
+(Lien vers le PDF)
+
+Accés à l'espace administrateur : Identifiant et mot de passe dans la copie de l'ECF
+
