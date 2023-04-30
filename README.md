@@ -8,11 +8,14 @@ Le lien du projet ici : https://quai-antic.jkwebcreation.fr
 Contexte : Cette application est un site vitrine pour un restaurant fictif "Le Quai Antic". L'essentiel du projet est de présenter la carte, les menus ainsi que les plats phares du chef. Il s'agit également de pouvoir  réserver une table pour un visiteur et de se connecter en tant que client habituel pour pouvoir renseigner son nombre de convives habituel ou ses allergie. Enfin la mise en place d'un espace administration permet au restaurateur de gérer les réservations ainsi que ses plats phares, ses menus et sa carte. Il pourra également gérer les horaires du restaurant.
 
 Les fonctionnalités du projet :
+
 Visiteur :
+
 Réserver une table
 Créer un compte
 
 Utilisateur :
+
 Se connecter
 Créer un compte
 Renseigner allergie et nombre de convives habituel
@@ -35,6 +38,7 @@ Environnement de travail :
 - Figma pour réaliser les wireframes de l’application.
 - Dia pour réaliser les différents diagrammes (Cas d'utilisation, Séquence et Classe)
 - L’outil de versioning Git pour developper les fonctionnalités.
+- VS Code et quelques extensions (PHP intellisense, Symfony for VS Code, Twig Language 2,...)
 
 Partie Front-end :
 - le framework Bootstrap et JavaScript. Le thême Solar sur bootswatch.com
@@ -43,10 +47,9 @@ Partie Back-end :
 - Le framework Symfony avec ses dépendances comme composer et son ORM Doctrine ainsi que le bundle Easyadmin version 3.
 
 Ressources:
-
 Le thême Solar sur bootswatch.com
-
-Pour la font : les icones bootstrap via le CDN
+Pour la police : Google Fonts
+Pour les icones : icons Bootstrap
 
 Livrables :
 La charte graphique et le maquettage : 
