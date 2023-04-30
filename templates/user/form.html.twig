@@ -3,7 +3,7 @@
 {% block title %}Créer un compte{% endblock %}
 
 {% block body %}
-	<div class="m-auto w-50 p-3 border border-primary rounded shadow">
+	<div class="col-11 col-lg-5 m-auto p-3 border border-primary rounded shadow">
 		{{ form_start(form, {'attr': {'class': 'container'}}) }}
 		{{form_row(form.email, {'attr': {'class': 'form-control'}})}}
 		{{form_label(form.password)}}

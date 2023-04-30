@@ -13,7 +13,7 @@
     
   <h1 class="m-auto mb-2 w-75 text-center p-4 colorTitle">Les menus</h1>
   {% for title in menuTitle %} 
-  <div class="p-3 w-50 m-auto border border-primary rounded shadow bg-dark">
+  <div class="p-3 col-11 col-lg-5 m-auto border border-primary rounded shadow bg-dark">
     <h1 class="colorTitle text-center">{{ title }}</h1>
     {% for formule in menus %}
       {% if formule.title == title %}

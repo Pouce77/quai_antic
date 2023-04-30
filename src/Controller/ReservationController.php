@@ -45,13 +45,13 @@ class ReservationController extends AbstractController
          ]);
     }
 
-    #[Route('/reservation/{day}', name: 'app_reservation_day')]
-    public function reservation(String $day, HoraireRepository $horaireRepository, ReservationRepository $reservationRepository): Response
+    #[Route('/reservation/{dayChoice}', name: 'app_reservation_day')]
+    public function reservation(String $dayChoice, HoraireRepository $horaireRepository, ReservationRepository $reservationRepository): Response
     {
         $horaires=$horaireRepository->findAll();
         $horaire=new Horaire();
 
-        $dayFormat=date("D", strtotime($day));
+        $dayFormat=date("D", strtotime($dayChoice));
         $jour=getDay($dayFormat);
 
         foreach($horaires as $hor){
@@ -70,7 +70,7 @@ class ReservationController extends AbstractController
 
         //On vérifie si le restaurant est complet 
         
-        $reservations=$reservationRepository->findByDay($day);
+        $reservations=$reservationRepository->findByDay($dayChoice);
         $completM=false;
         $capaciteMatin=getCapaciteMatin($reservations,$creneauMatin);
         if($horaire->getCapacite() <= $capaciteMatin){
@@ -107,7 +107,7 @@ class ReservationController extends AbstractController
         ];    
         
         $response=$this->json($donnees);
-        $response->headers->set('Access-Control-Allow-Origin' , '*');
+        //$response->headers->set('Access-Control-Allow-Origin' , '*');
         return $response;
     }
 

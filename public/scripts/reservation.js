@@ -34,7 +34,7 @@ inputDate.addEventListener('change',()=>{
     creneauxDispo.removeChild(creneauxDispo.lastChild);
   }
   
-  fetch("https://127.0.0.1:8000/reservation/".concat(jour))
+  fetch("https://quai-antic.jkwebcreation.fr/reservation/".concat(jour))
   .then((res) => {
    return res.json();
   }) 
