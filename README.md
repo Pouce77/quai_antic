@@ -5,7 +5,7 @@ Ce projet est une application web développé avec Symfony, Bootstrap et JavaScr
 
 Le lien du projet ici : https://quai-antic.jkwebcreation.fr
 
-Contexte : Cette application est un site vitrine pour un restaurant fictif "Le Quai Antic". L'essentiel du projet est de présenter la carte, les menus ainsi que les plats phares du chef. Il s'agit également de pouvoir  réserver une table pour un visiteur et de se connecter en tant que client habituel pour pouvoir renseigner son nombre de convives habituel ou ses allergie. Enfin la mise en place d'un espace administration permet au restaurateur de gérer les réservations ainsi que ses plats phares, ses menus et sa carte. Il pourra également gérer les horaires du restaurant.
+Contexte : Cette application est un site vitrine pour un restaurant fictif "Le Quai Antic". L'essentiel du projet est de présenter la carte, les menus ainsi que les plats phares du chef. Il s'agit également de pouvoir  réserver une table pour un visiteur et de se connecter en tant que client habituel pour pouvoir renseigner son nombre de convives habituel ou ses allergies. Enfin la mise en place d'un espace administration permet au restaurateur de gérer les réservations ainsi que ses plats phares, ses menus et sa carte. Il pourra également gérer les horaires du restaurant.
 
 Les fonctionnalités du projet :
 
