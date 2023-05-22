@@ -21,7 +21,8 @@ class ReservationType extends AbstractType
             ->add('day', DateType::class, [
                 "label" => "Quel jour souhaitez-vous réserver ?",
                 "required" => true,
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'attr' =>['min' => ( new \DateTime() )->format('Y-m-d')]
             ])
             ->add('numberOfpeople', IntegerType::class,[
             "label" => "Nombre de couverts",
