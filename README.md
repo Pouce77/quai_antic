@@ -1,13 +1,13 @@
-Projet pour l'Evaluation en cours de formation sujet : "Restaurant Quai Antic"
+##Projet pour l'Evaluation en cours de formation sujet : "Restaurant Quai Antic"
 
 Réalisé pour mes évaluations de fin d'études pour le Titre Professionnel Développeur web et web mobile.
 Ce projet est une application web développé avec Symfony, Bootstrap et JavaScript.
 
 Le lien du projet ici : https://quai-antic.jkwebcreation.fr
 
-Contexte : Cette application est un site vitrine pour un restaurant fictif "Le Quai Antic". L'essentiel du projet est de présenter la carte, les menus ainsi que les plats phares du chef. Il s'agit également de pouvoir  réserver une table pour un visiteur et de se connecter en tant que client habituel pour pouvoir renseigner son nombre de convives habituel ou ses allergie. Enfin la mise en place d'un espace administration permet au restaurateur de gérer les réservations ainsi que ses plats phares, ses menus et sa carte. Il pourra également gérer les horaires du restaurant.
+Contexte : Cette application est un site vitrine pour un restaurant fictif "Le Quai Antic". L'essentiel du projet est de présenter la carte, les menus ainsi que les plats phares du chef. Il s'agit également de pouvoir  réserver une table pour un visiteur et de se connecter en tant que client habituel pour pouvoir renseigner son nombre de convives habituel ou ses allergies. Enfin la mise en place d'un espace administration permet au restaurateur de gérer les réservations ainsi que ses plats phares, ses menus et sa carte. Il pourra également gérer les horaires du restaurant.
 
-Les fonctionnalités du projet :
+#Les fonctionnalités du projet :
 
 Visiteur :
 
@@ -29,7 +29,7 @@ Gérer les menus
 Gérer les utilisateurs
 Gérer les plats phares
 
-Les spécifications techniques :
+#Les spécifications techniques :
 
 Voici les différentes technologies que j’ai utilisé pour ce projet :
 
@@ -46,14 +46,14 @@ Partie Front-end :
 Partie Back-end :
 - Le framework Symfony avec ses dépendances comme composer et son ORM Doctrine ainsi que le bundle Easyadmin version 3.
 
-Ressources:
+#Ressources:
 Le thême Solar sur bootswatch.com
 Pour la police : Google Fonts
 Pour les icones : icons Bootstrap
 
-le guide d'utilisation : 
+#le guide d'utilisation : 
 
-(Lien vers le PDF)
+Lien vers le PDF : https://drive.google.com/file/d/1juWHtquVr8P3A0sa7z4neP8sY5CFTxNd/view?usp=sharing
 
 Accés à l'espace administrateur : Identifiant et mot de passe dans la copie de l'ECF
 
