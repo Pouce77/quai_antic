@@ -5,23 +5,24 @@
 {% block body %}
 	<div class="col-11 col-lg-5 m-auto p-3 border border-primary rounded shadow">
 		{{ form_start(form, {'attr': {'class': 'container'}}) }}
-		{{form_row(form.email, {'attr': {'class': 'form-control'}})}}
-		{{form_label(form.password)}}
-		<div class="input-group mb-3">
-			{{form_widget(form.password, {'attr': {'class': 'form-control'}})}}
-			<span role="button" class="input-group-text" onclick="togglePassword()">
-				<i class="bi bi-eye" id="eye"></i>
-				<i class="bi bi-eye-slash d-none" id="eye-slash"></i>
-			</span>
+			{{form_row(form.email, {'attr': {'class': 'form-control'}})}}
+			{{form_label(form.password)}}
+			<div class="input-group mb-3">
+				{{ form_widget(form.password, {'attr': {'class': 'form-control'}})}}
+				<span role="button" class="input-group-text" onclick="togglePassword()">
+					<i class="bi bi-eye" id="eye"></i>
+					<i class="bi bi-eye-slash d-none" id="eye-slash"></i>
+				</span>
+			</div>
+			{{ form_errors(form.password)}}
+      {{ form_label(form.confirm)}}
+			{{ form_widget(form.confirm, {'attr': {'class': 'form-control'}})}}
+			{{ form_row(form.allergie,{'attr': {'class': 'form-control'}})}}
+			{{ form_row(form.nbrCouvert,{'attr': {'class': 'form-control w-50'}})}}
+      {{ form_rest(form) }}
+			<input class='btn btn-success mt-4' type="submit" value="Créer le compte"></input>	
+		<div>
+			<a href="/login" class="btn btn-link px-0">Se connecter</a>
 		</div>
-		{{form_errors(form.password)}}
-        {{form_label(form.confirm)}}
-		{{ form_widget(form.confirm, {'attr': {'class': 'form-control'}})}}
-		{{ form_row(form.allergie,{'attr': {'class': 'form-control'}})}}
-		{{ form_row(form.nbrCouvert,{'attr': {'class': 'form-control w-50'}})}}
-        {{ form_rest(form) }}
-		<input class='btn btn-success mt-4' type="submit" value="Créer le compte"></input>
-	<div>
-		<a href="/login" class="btn btn-link px-0">Se connecter</a>
-	</div>
+		{{form_end(form)}}
 </div>{% endblock %}
